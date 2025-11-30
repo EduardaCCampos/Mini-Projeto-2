@@ -85,12 +85,6 @@ O arquivo deve ser passado como parâmetro:
 
 ./terrenos dados.txt
 
-3. Executar
-
-O arquivo deve ser passado como parâmetro:
-
-./terrenos dados.txt
-
  ---
 📁 Arquivos do projeto
  ---
