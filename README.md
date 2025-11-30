@@ -78,6 +78,13 @@ Terrenos (ID, proprietário, data de compra, dimensões, área, preço por m²)
    
 gcc main.c funcoes.c -o terrenos
 
+
+2. Executar
+
+O arquivo deve ser passado como parâmetro:
+
+./terrenos dados.txt
+
 3. Executar
 
 O arquivo deve ser passado como parâmetro:
@@ -88,10 +95,15 @@ O arquivo deve ser passado como parâmetro:
 📁 Arquivos do projeto
  ---
 /mini-projeto-terrenos-C
+
 ├── main.c
+
 ├── funcoes.c
+
 ├── funcoes.h
-├── input.txt        → dados usados no teste
+
+├── input.txt → dados usados no teste
+
 ├── README.md
 
 
