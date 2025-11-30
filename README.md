@@ -1,10 +1,18 @@
-# Mini-Projeto-2
-🛰️ Mini Projeto – Sistema de Gestão de Terrenos (Linguagem C)
 
+ ---
+🛰️ Mini Projeto – Sistema de Gestão de Terrenos (Linguagem C)
+ ---
 📌 Disciplina: Introdução à Programação em C
+ ---
+ 
+🌐 Link do Repositório no GitHub
+ ---
+➡️ [https://github.com/EduardaCCampos/Mini-Projeto-2/](https://github.com/EduardaCCampos/Mini-Projeto-2/)
+
+ ---
 
 👩‍💻 Integrantes do grupo:
-
+ ---
 Eduarda Lima | [@EduardaCCampos](https://github.com/EduardaCCampos)
 
 Sarah Godinho | [@Sarocaa](https://github.com/Sarocaa)
@@ -14,7 +22,7 @@ Clara Bertão |[@clarabertao](https://github.com/clarabertao)
 ---
 
 🚀 Descrição do Projeto
-
+ ---
 - Este projeto implementa um sistema completo de gerenciamento de terrenos, utilizando:
 
 - Vetor de ponteiros para structs
@@ -33,7 +41,7 @@ O objetivo é gerenciar até 100 terrenos, permitindo criar, editar, remover, bu
 
 
 🧩 Funcionalidades Implementadas
-
+ ---
 - Criar novo terreno
 
 - Editar terreno existente
@@ -54,14 +62,17 @@ O objetivo é gerenciar até 100 terrenos, permitindo criar, editar, remover, bu
 
 
 🗂️ Estrutura das Structs
-
+ ---
 Data
 
 Pessoa
 
 Terrenos (ID, proprietário, data de compra, dimensões, área, preço por m²)
 
+ ---
+
 🖥️ Como executar
+ ---
 
 1. Compilar
    
@@ -73,18 +84,15 @@ O arquivo deve ser passado como parâmetro:
 
 ./terrenos dados.txt
 
+ ---
 📁 Arquivos do projeto
+ ---
 /mini-projeto-terrenos-C
 ├── main.c
 ├── funcoes.c
 ├── funcoes.h
 ├── input.txt        → dados usados no teste
 ├── README.md
-
-
-🌐 Link do Repositório no GitHub
-
-➡️ [https://github.com/EduardaCCampos/Mini-Projeto-2/](https://github.com/EduardaCCampos/Mini-Projeto-2/)
 
 
 ⚙️ Tecnologias Utilizadas
