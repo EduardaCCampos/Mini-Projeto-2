@@ -1,6 +1,8 @@
 # Mini-Projeto-2
 🛰️ Mini Projeto – Sistema de Gestão de Terrenos (Linguagem C)
+
 📌 Disciplina: Introdução à Programação em C
+
 👩‍💻 Integrantes do grupo:
 
 Eduarda Lima | @EduardaCCampos [https://github.com/EduardaCCampos]
@@ -9,39 +11,47 @@ Sarah Godinho | @Sarocaa [https://github.com/Sarocaa]
 
 Clara Bertão |@clarabertao [https://github.com/clarabertao]
 
+---
+
 🚀 Descrição do Projeto
 
-Este projeto implementa um sistema completo de gerenciamento de terrenos, utilizando:
+- Este projeto implementa um sistema completo de gerenciamento de terrenos, utilizando:
 
-Vetor de ponteiros para structs
+- Vetor de ponteiros para structs
 
-Alocação dinâmica de memória
+- Alocação dinâmica de memória
 
-Manipulação de arquivos
+- Manipulação de arquivos
 
-Menu interativo em loop
+- Menu interativo em loop
 
-Cálculo automático de área, preço total e estatísticas gerais
+- Cálculo automático de área, preço total e estatísticas gerais
 
 O objetivo é gerenciar até 100 terrenos, permitindo criar, editar, remover, buscar e salvar os dados.
 
+---
+
+
 🧩 Funcionalidades Implementadas
 
-Criar novo terreno
+- Criar novo terreno
 
-Editar terreno existente
+- Editar terreno existente
 
-Remover terreno
+- Remover terreno
 
-Mostrar dados por ID
+- Mostrar dados por ID
 
-Calcular valor do terreno
+- Calcular valor do terreno
 
-Contar terrenos livres/ocupados
+- Contar terrenos livres/ocupados
 
-Calcular valor total de todos
+- Calcular valor total de todos
 
-Salvar e carregar os dados em arquivo
+- Salvar e carregar os dados em arquivo
+
+ ---
+
 
 🗂️ Estrutura das Structs
 
@@ -52,10 +62,12 @@ Pessoa
 Terrenos (ID, proprietário, data de compra, dimensões, área, preço por m²)
 
 🖥️ Como executar
+
 1. Compilar
+   
 gcc main.c funcoes.c -o terrenos
 
-2. Executar
+3. Executar
 
 O arquivo deve ser passado como parâmetro:
 
@@ -72,20 +84,15 @@ O arquivo deve ser passado como parâmetro:
 
 🌐 Link do Repositório no GitHub
 
-➡️ https://github.com/SEU_USUARIO/mini-projeto-terrenos-C
+➡️ [https://github.com/EduardaCCampos/Mini-Projeto-2/](https://github.com/EduardaCCampos/Mini-Projeto-2/)
 
-🎥 Vídeo de Apresentação
-
-O vídeo demonstrando o funcionamento do sistema estará na pasta:
-
-/docs/video-apresentacao.mp4
 
 ⚙️ Tecnologias Utilizadas
 
-C (padrão C11)
+- C (padrão C11)
 
-Manipulação de arquivos
+- Manipulação de arquivos
 
-Ponteiros e alocação dinâmica
+- Ponteiros e alocação dinâmica
 
-Git & GitHub
+- Git & GitHub
