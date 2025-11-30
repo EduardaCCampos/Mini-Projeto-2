@@ -5,9 +5,9 @@
 📌 Disciplina: Introdução à Programação em C
  ---
  
-🌐 Link do Repositório no GitHub
+🌐 Link do Projeto no GitHub
  ---
-➡️ [https://github.com/EduardaCCampos/Mini-Projeto-2/](https://github.com/EduardaCCampos/Mini-Projeto-2/)
+➡️ [https://github.com/users/EduardaCCampos/projects/3](https://github.com/users/EduardaCCampos/projects/3)
 
  ---
 
