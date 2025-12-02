@@ -13,11 +13,14 @@
 
 👩‍💻 Integrantes do grupo:
  ---
-Eduarda Lima | [@EduardaCCampos](https://github.com/EduardaCCampos)
-
-Sarah Godinho | [@Sarocaa](https://github.com/Sarocaa)
 
 Clara Bertão |[@clarabertao](https://github.com/clarabertao)
+
+Eduarda Lima | [@EduardaCCampos](https://github.com/EduardaCCampos)
+
+Julia Coité | [@Julicoit](https://github.com/juliacoit)
+
+Sarah Godinho | [@Sarocaa](https://github.com/Sarocaa)
 
 ---
 
