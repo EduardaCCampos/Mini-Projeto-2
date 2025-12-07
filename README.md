@@ -59,7 +59,7 @@ O objetivo é gerenciar até 100 terrenos, permitindo criar, editar, remover, bu
 - Calcular valor total de todos
 
 - Salvar e carregar os dados em arquivo
-- 
+
 ---
 
  #### 🗂️ Estruturas Utilizadas
