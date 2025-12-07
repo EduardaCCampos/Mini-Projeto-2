@@ -150,12 +150,37 @@ void editarTerreno (Terrenos **terrenos, int id) {
         printf("Erro: Terreno ID %d não encontrado.\n", id);
     }
 }
-double calcularValorTerreno ( Terrenos **terrenos, int id);
-
-int contarTerrenosOcupados ( Terrenos **terrenos);
-
-int contarTerrenosLivres ( Terrenos **terrenos);
-
+double calcularValorTerreno ( Terrenos **terrenos, int id, int numero_terrenos){
+    int i;
+    double valor;
+    for(i=0; i<numero_terrenos; i++){
+        if(id==terrenos[i]->id){ //OLHAR SE RODA COM id==terrenos[i].id ou muda para (id==terrenos[i]->id
+            valor=terrenos[i]->preco_m2*terrenos[i]->area; 
+        }
+        return valor;
+    }
+    return -1 //se retornar -1 caso tente calcular o valor de um terreno nao ocupado, COLOCAR PRINTF NA MAIN
+}
+ int contarTerrenosOcupados (struct Terrenos **terrenos, int numero_terrenos){
+     int i, terrenos_ocupados=0;
+    
+    for(i=0; i<numero_terrenos; i++){
+       if (terrenos[i] != NULL && terrenos[i]->id != -1){
+            terrenos_ocupados++;
+        }
+    }
+    return terrenos_ocupados; 
+ }
+int contarTerrenosLivres (struct Terrenos **terrenos, int numero_terrenos){
+    int i, terrenos_livres=0;
+    
+    for(i=0; i<numero_terrenos; i++){
+        if(terrenos[i] == NULL || terrenos[i]->id == -1){
+            terrenos_livres++;
+        }
+    }
+    return terrenos_livres;
+}
 double calcularValorTotal ( Terrenos **terrenos);
 
 void salvarTerrenos(Terrenos **terrenos, const char *dados) {
