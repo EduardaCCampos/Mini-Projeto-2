@@ -17,6 +17,7 @@ void inicializarVetor ( Terrenos **terrenos){
 void criarTerreno (Terrenos **terrenos) {
     int i;
     int indice_livre = -1;
+    Terrenos *novo;
 
     for (i = 0; i < TAMANHO_INICIAL; i++) {
         if (terrenos[i] == NULL) {
@@ -30,7 +31,7 @@ void criarTerreno (Terrenos **terrenos) {
         return;
     }
 
-    Terrenos *novo = (Terrenos *)malloc(sizeof(Terrenos));
+    novo = (Terrenos *)malloc(sizeof(Terrenos));
     if (novo == NULL) {
         perror("Erro ao alocar memória para o novo terreno");
         return;
@@ -159,12 +160,13 @@ double calcularValorTotal ( Terrenos **terrenos);
 
 void salvarTerrenos(Terrenos **terrenos, const char *dados) {
     FILE *f = fopen(dados, "wb"); 
+    int i, count = contarTerrenosOcupados(terrenos);
     if (f == NULL) {
         perror("Erro ao abrir arquivo para salvar");
         return;
     }
 
-    int i, count = contarTerrenosOcupados(terrenos);
+    
 
     if (fwrite(&count, sizeof(int), 1, f) != 1) {
         perror("Erro ao escrever a contagem de terrenos");
@@ -188,6 +190,7 @@ void salvarTerrenos(Terrenos **terrenos, const char *dados) {
 
 void carregarTerrenos(Terrenos ***terrenos_ptr, const char *dados) {
     FILE *f = fopen(dados, "rb"); 
+    int count, i;
     if (f == NULL) {
         perror("Erro ao abrir arquivo para carregar (O arquivo pode não existir ainda)");
         
@@ -208,7 +211,7 @@ void carregarTerrenos(Terrenos ***terrenos_ptr, const char *dados) {
         }
     }
 
-    int count, i;
+    
 
     if (fread(&count, sizeof(int), 1, f) != 1) {
         if (feof(f)) { 
