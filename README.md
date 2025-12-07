@@ -2,7 +2,7 @@
  ---
 ### 🛰️ Mini Projeto – Sistema de Gestão de Terrenos (Linguagem C)
  ---
-### 📌 Disciplina: Introdução à Programação em C
+📌 Disciplina: Introdução à Programação em C
  ---
  
 ### 🌐 Link do Projeto no GitHub
