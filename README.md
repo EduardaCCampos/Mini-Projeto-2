@@ -11,7 +11,6 @@
 
 ➡️ [https://github.com/users/EduardaCCampos/projects/3](https://github.com/users/EduardaCCampos/projects/3)
 
- ---
 
 ---
 ### 👩‍💻 Desenvolvedores
@@ -25,7 +24,7 @@
 ---
 
 ### 🚀 Descrição do Projeto
- ---
+
 - Este projeto implementa um sistema completo de gerenciamento de terrenos, utilizando:
 
 - Vetor de ponteiros para structs
@@ -44,7 +43,7 @@ O objetivo é gerenciar até 100 terrenos, permitindo criar, editar, remover, bu
 
 
 ### 🧩 Funcionalidades Implementadas
- ---
+
 - Criar novo terreno
 
 - Editar terreno existente
@@ -60,6 +59,8 @@ O objetivo é gerenciar até 100 terrenos, permitindo criar, editar, remover, bu
 - Calcular valor total de todos
 
 - Salvar e carregar os dados em arquivo
+- 
+---
 
  #### 🗂️ Estruturas Utilizadas
 
@@ -71,8 +72,8 @@ O objetivo é gerenciar até 100 terrenos, permitindo criar, editar, remover, bu
 
 ---
 
-🖥️ Como executar
- ---
+### 🖥️ Como executar
+
 
 1. Compilar
    
