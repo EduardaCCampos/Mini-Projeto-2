@@ -1,7 +1,8 @@
 #include <stdio.h>
-#include<stdlib.h>
-#include "structs.h"
-
+#include <stdlib.h>
+#include <string.h>
+#include "Structs.h"
+#include "funcoes.h"
 
 
 int main(){
