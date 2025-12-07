@@ -1,30 +1,28 @@
 
  ---
-🛰️ Mini Projeto – Sistema de Gestão de Terrenos (Linguagem C)
+### 🛰️ Mini Projeto – Sistema de Gestão de Terrenos (Linguagem C)
  ---
-📌 Disciplina: Introdução à Programação em C
+### 📌 Disciplina: Introdução à Programação em C
  ---
  
-🌐 Link do Projeto no GitHub
+### 🌐 Link do Projeto no GitHub
  ---
 ➡️ [https://github.com/users/EduardaCCampos/projects/3](https://github.com/users/EduardaCCampos/projects/3)
 
  ---
 
-👩‍💻 Integrantes do grupo:
- ---
-
-Clara Bertão |[@clarabertao](https://github.com/clarabertao)
-
-Eduarda Lima | [@EduardaCCampos](https://github.com/EduardaCCampos)
-
-Julia Coité | [@Julicoit](https://github.com/juliacoit)
-
-Sarah Godinho | [@Sarocaa](https://github.com/Sarocaa)
+---
+### 👩‍💻 Desenvolvedores
+| Nome | GitHub |
+| :--- | :--- |
+| Clara Bertão | [@clarabertao](https://github.com/clarabertao) |
+| Eduarda Lima | [@EduardaCCampos](https://github.com/EduardaCCampos) |
+| Julia Coité | [@Julicoit](https://github.com/juliacoit) |
+| Sarah Godinho | [@Sarocaa](https://github.com/Sarocaa) |
 
 ---
 
-🚀 Descrição do Projeto
+### 🚀 Descrição do Projeto
  ---
 - Este projeto implementa um sistema completo de gerenciamento de terrenos, utilizando:
 
@@ -43,7 +41,7 @@ O objetivo é gerenciar até 100 terrenos, permitindo criar, editar, remover, bu
 ---
 
 
-🧩 Funcionalidades Implementadas
+### 🧩 Funcionalidades Implementadas
  ---
 - Criar novo terreno
 
@@ -61,18 +59,15 @@ O objetivo é gerenciar até 100 terrenos, permitindo criar, editar, remover, bu
 
 - Salvar e carregar os dados em arquivo
 
- ---
+ #### 🗂️ Estruturas Utilizadas
 
+| Struct | Campos Principais | Finalidade |
+| :--- | :--- | :--- |
+| **Data** | `dia`, `mes`, `ano` | Usada para datas de nascimento e compra. |
+| **Pessoa** | `nome`, `cpf`, `data_nascimento`, `telefone` | Detalhes do proprietário do terreno. |
+| **Terrenos** | `id`, `dono`, `data_compra`, `largura`, `comprimento`, `area`, `preco_m2` | Dados principais do imóvel. O **`id`** é a chave única. |
 
-🗂️ Estrutura das Structs
- ---
-Data
-
-Pessoa
-
-Terrenos (ID, proprietário, data de compra, dimensões, área, preço por m²)
-
- ---
+---
 
 🖥️ Como executar
  ---
@@ -86,30 +81,16 @@ gcc main.c funcoes.c -o terrenos
 
 O arquivo deve ser passado como parâmetro:
 
-./terrenos dados.txt
+./terrenos dados.dat
 
- ---
-📁 Arquivos do projeto
- ---
-/mini-projeto-terrenos-C
+ 
 
-├── main.c
+---
+### ⚙️ Tecnologias Utilizadas
 
-├── funcoes.c
+* C 
+* Manipulação de Arquivos (binário)
+* Ponteiros, Alocação Dinâmica (`malloc`, `free`, `calloc`)
+* Git & GitHub
 
-├── funcoes.h
-
-├── input.txt → dados usados no teste
-
-├── README.md
-
-
-⚙️ Tecnologias Utilizadas
-
-- C (padrão C11)
-
-- Manipulação de arquivos
-
-- Ponteiros e alocação dinâmica
-
-- Git & GitHub
+---
