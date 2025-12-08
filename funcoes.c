@@ -6,11 +6,9 @@
 #define TAMANHO_INICIAL 100
 
 
-void inicializarVetor ( Terrenos **terrenos){
-    *terrenos=(Terrenos **)calloc(TAMANHO_INICIAL,sizeof(Terrenos *));
-    if (*terrenos == NULL) {
-        perror("Erro ao alocar memória para o vetor de terrenos");
-        exit(EXIT_FAILURE);
+void inicializarVetor(struct Terrenos **terrenos) {
+    for (int i = 0; i < MAX_TERRENOS; i++) {
+        terrenos[i] = NULL;
     }
 }
 
