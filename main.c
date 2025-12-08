@@ -31,17 +31,16 @@ void pausar() {
 }
 
 void exibirCabecalho() {
-    printf(CIANO NEGRITO);
-    printf("   /\\                                                        \n");
-    printf("  /  \\    _____ _    _ _____   _____ _____  ______          \n");
-    printf(" /_  _\\  |  __ \\ |  | |  __ \\ / ____|  __ \\|  ____|    \n");
-    printf("   ||    | |  | | |  | | |__) | |  __| |__) | |__           \n");
-    printf("   ||    | |  | | |  | |  ___/| | |_ |  _  /|  __|          \n");
-    printf("   ||    | |__| | |__| | |    | |__| | | \\ \\| |____       \n");
-    printf("  |__|   |_____/ \\____/|_|     \\_____|_|  \\_\\______|    \n");
+    printf(VERDE NEGRITO);
+    printf("  _______                              \n");
+    printf(" |__   __|                         _   \n");
+    printf("    | | ___ _ __ _ __ ___ _ __   _| |_ \n");
+    printf("    | |/ _ \\ '__| '__/ _ \\ '_ \\ |_   _|\n");
+    printf("    | |  __/ |  | | |  __/ | | |  |_|  \n");
+    printf("    |_|\\___|_|  |_|  \\___|_| |_|       \n");
     printf(RESET);
-    printf(BRANCO "  >>> SISTEMA DE GESTAO DE TERRENOS v2.0 <<<\n" RESET);
-    printf(AZUL "  ==========================================================\n" RESET);
+    printf(AMARELO "  >>> GESTAO IMOBILIARIA v2.0 <<<\n" RESET);
+    printf(BRANCO "  -------------------------------\n" RESET);
 }
 
 int main (int argc, char *argv[]) 
