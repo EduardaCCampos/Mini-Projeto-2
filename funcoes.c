@@ -1,23 +1,23 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "Structs.h"
 #include "funcoes.h"
-#include <string.h>
-#define TAMANHO_INICIAL 100
 
+#define MAX_TERRENOS 100
 
-void inicializarVetor(struct Terrenos **terrenos) {
+void inicializarVetor(Terrenos **terrenos) {
     for (int i = 0; i < MAX_TERRENOS; i++) {
         terrenos[i] = NULL;
     }
 }
 
-void criarTerreno (Terrenos **terrenos) {
+void criarTerreno(Terrenos **terrenos) {
     int i;
     int indice_livre = -1;
     Terrenos *novo;
 
-    for (i = 0; i < TAMANHO_INICIAL; i++) {
+    for (i = 0; i < MAX_TERRENOS; i++) {
         if (terrenos[i] == NULL) {
             indice_livre = i;
             break;
@@ -31,7 +31,7 @@ void criarTerreno (Terrenos **terrenos) {
 
     novo = (Terrenos *)malloc(sizeof(Terrenos));
     if (novo == NULL) {
-        perror("Erro ao alocar memória para o novo terreno");
+        perror("Erro ao alocar memória");
         return;
     }
 
@@ -41,7 +41,7 @@ void criarTerreno (Terrenos **terrenos) {
     if (scanf("%d", &novo->id) != 1) { free(novo); return; }
 
     printf("Nome do Dono: ");
-    while (getchar() != '\n');
+    while (getchar() != '\n'); // limpa buffer
     fgets(novo->dono.nome, 100, stdin);
     novo->dono.nome[strcspn(novo->dono.nome, "\n")] = 0; 
 
@@ -72,28 +72,27 @@ void criarTerreno (Terrenos **terrenos) {
     printf("Terreno ID %d cadastrado com sucesso na posição %d.\n", novo->id, indice_livre);
 }
 
-
-void deletarTerreno (Terrenos **terrenos) {
+void deletarTerreno(Terrenos **terrenos) {
     int id_procurado, i;
     printf("Digite o ID do terreno a ser deletado: ");
     if (scanf("%d", &id_procurado) != 1) return;
 
-    for (i = 0; i < TAMANHO_INICIAL; i++) {
+    for (i = 0; i < MAX_TERRENOS; i++) {
         if (terrenos[i] != NULL && terrenos[i]->id == id_procurado) {
             free(terrenos[i]);
             terrenos[i] = NULL; 
-            printf("Terreno ID %d deletado e memória liberada.\n", id_procurado);
+            printf("Terreno ID %d deletado.\n", id_procurado);
             return;
         }
     }
     printf("Erro: Terreno ID %d não encontrado.\n", id_procurado);
 }
 
-void mostrarTerreno (Terrenos **terrenos, int id) {
+void mostrarTerreno(Terrenos **terrenos, int id) {
     int i;
     Terrenos *t = NULL;
     
-    for (i = 0; i < TAMANHO_INICIAL; i++) {
+    for (i = 0; i < MAX_TERRENOS; i++) {
         if (terrenos[i] != NULL && terrenos[i]->id == id) {
             t = terrenos[i];
             break;
@@ -114,11 +113,11 @@ void mostrarTerreno (Terrenos **terrenos, int id) {
     }
 }
 
-void editarTerreno (Terrenos **terrenos, int id) {
+void editarTerreno(Terrenos **terrenos, int id) {
     int i;
     Terrenos *t = NULL;
     
-    for (i = 0; i < TAMANHO_INICIAL; i++) {
+    for (i = 0; i < MAX_TERRENOS; i++) {
         if (terrenos[i] != NULL && terrenos[i]->id == id) {
             t = terrenos[i];
             break;
@@ -143,72 +142,76 @@ void editarTerreno (Terrenos **terrenos, int id) {
 
         t->area = t->largura * t->comprimento;
 
-        printf("Terreno ID %d atualizado com sucesso.\n", id);
+        printf("Terreno ID %d atualizado.\n", id);
     } else {
         printf("Erro: Terreno ID %d não encontrado.\n", id);
     }
 }
-double calcularValorTerreno ( Terrenos **terrenos, int id, int numero_terrenos){
+
+double calcularValorTerreno(Terrenos **terrenos, int id) {
     int i;
-    double valor;
-    for(i=0; i<numero_terrenos; i++){
-        if(id==terrenos[i]->id){ 
-            valor=terrenos[i]->preco_m2*terrenos[i]->area; 
+    for(i = 0; i < MAX_TERRENOS; i++) {
+        // Verifica se terrenos[i] não é NULL antes de acessar o ID
+        if(terrenos[i] != NULL && terrenos[i]->id == id) { 
+            return (double)(terrenos[i]->preco_m2 * terrenos[i]->area); 
         }
-        return valor;
     }
-    return -1 //se retornar -1 caso tente calcular o valor de um terreno nao ocupado, COLOCAR PRINTF NA MAIN
+    return -1.0;
 }
- int contarTerrenosOcupados (struct Terrenos **terrenos, int numero_terrenos){
-     int i, terrenos_ocupados=0;
+
+int contarTerrenosOcupados(Terrenos **terrenos) {
+    int i, terrenos_ocupados = 0;
     
-    for(i=0; i<numero_terrenos; i++){
-       if (terrenos[i] != NULL && terrenos[i]->id != -1){
+    for(i = 0; i < MAX_TERRENOS; i++) {
+       if (terrenos[i] != NULL) {
             terrenos_ocupados++;
         }
     }
     return terrenos_ocupados; 
- }
-int contarTerrenosLivres (struct Terrenos **terrenos, int numero_terrenos){
-    int i, terrenos_livres=0;
+}
+
+int contarTerrenosLivres(Terrenos **terrenos) {
+    int i, terrenos_livres = 0;
     
-    for(i=0; i<numero_terrenos; i++){
-        if(terrenos[i] == NULL || terrenos[i]->id == -1){
+    for(i = 0; i < MAX_TERRENOS; i++) {
+        if(terrenos[i] == NULL) {
             terrenos_livres++;
         }
     }
     return terrenos_livres;
 }
-double calcularValorTotal ( Terrenos **terrenos, int numero_terrenos){
-   int i;
-   double valor_total=0.0;
 
-   for(i=0; i<numero_terrenos; i++){
-      valor_total+=(terrenos[i]->area)*(terrenoss[i]->preco_m2)
+double calcularValorTotal(Terrenos **terrenos) {
+   int i;
+   double valor_total = 0.0;
+
+   for(i = 0; i < MAX_TERRENOS; i++) {
+      if (terrenos[i] != NULL) {
+          valor_total += (terrenos[i]->area * terrenos[i]->preco_m2);
+      }
    }
    return valor_total;
 }
 
 void salvarTerrenos(Terrenos **terrenos, const char *dados) {
     FILE *f = fopen(dados, "wb"); 
-    int i, count = contarTerrenosOcupados(terrenos);
+    int count = contarTerrenosOcupados(terrenos);
+    
     if (f == NULL) {
         perror("Erro ao abrir arquivo para salvar");
         return;
     }
 
-    
-
     if (fwrite(&count, sizeof(int), 1, f) != 1) {
-        perror("Erro ao escrever a contagem de terrenos");
+        perror("Erro ao escrever contador");
         fclose(f);
         return;
     }
 
-    for (i = 0; i < TAMANHO_INICIAL; i++) {
+    for (int i = 0; i < MAX_TERRENOS; i++) {
         if (terrenos[i] != NULL) {
             if (fwrite(terrenos[i], sizeof(Terrenos), 1, f) != 1) {
-                perror("Erro ao salvar dados do terreno");
+                perror("Erro ao salvar terreno");
                 fclose(f);
                 return;
             }
@@ -216,60 +219,41 @@ void salvarTerrenos(Terrenos **terrenos, const char *dados) {
     }
 
     fclose(f);
-    printf("\nDados de %d terrenos salvos com sucesso em '%s'.\n", count, dados);
+    printf("\nDados de %d terrenos salvos em '%s'.\n", count, dados);
 }
-
-void carregarTerrenos(Terrenos ***terrenos_ptr, const char *dados) {
+void carregarTerrenos(Terrenos **terrenos, const char *dados) {
     FILE *f = fopen(dados, "rb"); 
     int count, i;
+    
     if (f == NULL) {
-        perror("Erro ao abrir arquivo para carregar (O arquivo pode não existir ainda)");
-        
-        if (*terrenos_ptr == NULL) {
-             inicializarVetor(terrenos_ptr);
-        }
+        inicializarVetor(terrenos);
         return;
     }
-
-    if (*terrenos_ptr == NULL) {
-        inicializarVetor(terrenos_ptr);
-    } else {
-        for(int k = 0; k < TAMANHO_INICIAL; k++) {
-            if((*terrenos_ptr)[k] != NULL) {
-                free((*terrenos_ptr)[k]);
-                (*terrenos_ptr)[k] = NULL;
-            }
+    for(int k = 0; k < MAX_TERRENOS; k++) {
+        if(terrenos[k] != NULL) {
+            free(terrenos[k]);
+            terrenos[k] = NULL;
         }
     }
 
-    
-
     if (fread(&count, sizeof(int), 1, f) != 1) {
-        if (feof(f)) { 
-            printf("Arquivo de dados vazio. Nenhum terreno carregado.\n");
-        } else {
-            perror("Erro ao ler a contagem de terrenos");
-        }
+        if (!feof(f)) perror("Erro ao ler contador");
         fclose(f);
         return;
     }
 
-    for (i = 0; i < count && i < TAMANHO_INICIAL; i++) {
+    for (i = 0; i < count && i < MAX_TERRENOS; i++) {
         Terrenos *novo = (Terrenos *)malloc(sizeof(Terrenos));
-        if (novo == NULL) {
-            perror("Erro de alocação de memória ao carregar terreno");
-            break; 
-        }
+        if (novo == NULL) break; 
 
         if (fread(novo, sizeof(Terrenos), 1, f) != 1) {
-            perror("Erro ao carregar dados do terreno");
             free(novo);
             break; 
         }
         
-        (*terrenos_ptr)[i] = novo; 
+        terrenos[i] = novo; 
     }
 
     fclose(f);
-    printf("Dados de %d terrenos carregados com sucesso de '%s'.\n", i, dados);
+    printf("Dados de %d terrenos carregados.\n", i);
 }
