@@ -14,11 +14,12 @@ int main (int argc, char *argv[])
     }
 
     int opcao, id;
+    double valorterreno;
     const char *nomeArquivo = argv[1]; 
     struct Terrenos **terrenos = NULL;
 
     inicializarVetor(&terrenos);
-    carregarTerrenos(terrenos, nomeArquivo);
+    carregarTerrenos(&terrenos, nomeArquivo);
 
     do {
         printf("\n========== MENU ==========\n");
@@ -36,7 +37,11 @@ int main (int argc, char *argv[])
         printf("==========================\n");
         printf("Escolha uma opção: ");
         
-        scanf("%d", &opcao);
+        if (scanf("%d", &opcao) != 1) {
+            opcao = -1;
+            while (getchar() != '\n'); 
+        }
+        printf("\n");
 
         switch (opcao)
         {
@@ -44,42 +49,54 @@ int main (int argc, char *argv[])
             printf("Encerrando programa… Salvando dados!\n");
             salvarTerrenos(terrenos, nomeArquivo);
             break;
+
         case 1:
             criarTerreno(terrenos);
             break;
+
         case 2:
-            printf("Informe o ID do terreno que deseja deletar: ");
-            scanf("%d", &id);
             deletarTerreno(terrenos);
             break;
+
         case 3:
             printf("Informe o ID do terreno que deseja visualizar: ");
             scanf("%d", &id);
+            printf("\n");
             mostrarTerreno(terrenos, id);
             break;
+
         case 4:
             printf("Informe o ID do terreno que deseja editar: ");
             scanf("%d", &id);
+            printf("\n");
             editarTerreno(terrenos, id);
             break;
+
         case 5:
-            printf("Terrenos ocupados: %d\n", contarTerrenosOcupados(terrenos));
-            break;
-        case 6:
-            printf("Terrenos livres: %d\n", contarTerrenosLivres(terrenos));
-            break;
-        case 7:
             printf("Informe o ID do terreno: ");
             scanf("%d", &id);
-            printf("Valor do terreno: %.2f\n", calcularValorTerreno(terrenos, id));
+            printf("\n");
+            valorterreno = calcularValorTerreno(terrenos, id);
+            if(valorterreno==-1) printf("Terreno inválido!\n");
+            else printf("Valor do terreno: %.2lf\n", valorterreno);
             break;
+        
+        case 6:
+            printf("Terrenos ocupados: %d\n", contarTerrenosOcupados(terrenos));
+            break;
+            
+        case 7:
+            printf("Terrenos livres: %d\n", contarTerrenosLivres(terrenos));
+            break;
+
         case 8:
-            printf("Valor total de todos os terrenos: %.2f\n", calcularValorTotal(terrenos));
+            printf("Valor total de todos os terrenos: %.2lf\n", calcularValorTotal(terrenos));
             break;
+
         case 9:
             salvarTerrenos(terrenos, nomeArquivo);
-            printf("Dados salvos com sucesso!\n");
             break;
+
         default:
             printf("Opcao invalida! Tente novamente.\n");
         }
