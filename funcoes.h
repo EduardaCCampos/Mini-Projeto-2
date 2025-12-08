@@ -17,4 +17,6 @@ double calcularValorTotal(Terrenos **terrenos);
 void salvarTerrenos(Terrenos **terrenos, const char *dados);
 void carregarTerrenos(Terrenos **terrenos, const char *dados);
 
+void importarTexto(Terrenos **terrenos, const char *nomeArquivoTxt);
+
 #endif
