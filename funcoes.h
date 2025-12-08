@@ -15,7 +15,7 @@ void editarTerreno ( Terrenos **terrenos, int id);
 
 double calcularValorTerreno ( Terrenos **terrenos, int id);
 
-int contarTerrenosOcupados ( Terrenos **terrenos);
+int contarTerrenosOcupados ( Terrenos **terrenos, int numeros_terrenos);
 
 int contarTerrenosLivres ( Terrenos **terrenos);
 
