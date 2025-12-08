@@ -63,9 +63,6 @@ int main (int argc, char *argv[])
     printf(AMARELO "Inicializando sistema e carregando dados de '%s'...\n" RESET, nomeArquivo);
     inicializarVetor(&terrenos);
     carregarTerrenos(&terrenos, nomeArquivo);
-    
-    // Pequena pausa simulada (opcional, apenas para efeito visual)
-    // Se estiver no windows: Sleep(1000);
 
     do {
         limparTela();
