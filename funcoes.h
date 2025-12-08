@@ -4,6 +4,9 @@
 
 void inicializarVetor(Terrenos **terrenos);
 
+int calcularHash(int id);
+int buscarIndicePorId(Terrenos **terrenos, int id);
+
 void criarTerreno(Terrenos **terrenos);
 void deletarTerreno(Terrenos **terrenos);
 void mostrarTerreno(Terrenos **terrenos, int id);
