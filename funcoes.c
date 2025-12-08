@@ -181,7 +181,15 @@ int contarTerrenosLivres (struct Terrenos **terrenos, int numero_terrenos){
     }
     return terrenos_livres;
 }
-double calcularValorTotal ( Terrenos **terrenos);
+double calcularValorTotal ( Terrenos **terrenos, int numero_terrenos){
+   int i;
+   double valor_total=0.0;
+
+   for(i=0; i<numero_terrenos; i++){
+      valor_total+=(terrenos[i]->area)*(terrenoss[i]->preco_m2)
+   }
+   return valor_total;
+}
 
 void salvarTerrenos(Terrenos **terrenos, const char *dados) {
     FILE *f = fopen(dados, "wb"); 
