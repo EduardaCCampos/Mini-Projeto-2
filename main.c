@@ -31,16 +31,18 @@ void pausar() {
 }
 
 void exibirCabecalho() {
-    printf(VERDE NEGRITO);
-    printf("  _______                              \n");
-    printf(" |__   __|                         _   \n");
-    printf("    | | ___ _ __ _ __ ___ _ __   _| |_ \n");
-    printf("    | |/ _ \\ '__| '__/ _ \\ '_ \\ |_   _|\n");
-    printf("    | |  __/ |  | | |  __/ | | |  |_|  \n");
-    printf("    |_|\\___|_|  |_|  \\___|_| |_|       \n");
+    printf(AZUL NEGRITO);
+    printf("  _____                           _                       \n");
+    printf(" |_   _|                         (_)                      \n");
+    printf("   | | ___ _ __ _ __ ___ _ __   _ ___   ___ _   _ ___ \n");
+    printf("   | |/ _ \\ '__| '__/ _ \\ '_ \\ | / __| / __| | | / __|\n");
+    printf("   | |  __/ |  | | |  __/ | | || \\__ \\ \\__ \\ |_| \\__ \\\n");
+    printf("   \\_/\\___|_|  |_|  \\___|_| |_|/ |___/ |___/\\__, |___/\n");
+    printf("                              |__/           __/ |    \n");
+    printf("                                            |___/     \n");
     printf(RESET);
-    printf(AMARELO "  >>> GESTAO IMOBILIARIA v2.0 <<<\n" RESET);
-    printf(BRANCO "  -------------------------------\n" RESET);
+    printf("  " CIANO ">>> SISTEMA DE GESTAO IMOBILIARIA v1.0 <<<" RESET "\n");
+    printf("  ----------------------------------------------------\n");
 }
 
 int main (int argc, char *argv[]) 
