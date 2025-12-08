@@ -15,6 +15,8 @@
 #define BRANCO  "\033[37m"
 #define NEGRITO "\033[1m"
 
+#define MAX_TERRENOS 100 
+
 // Detecta sistema operacional para comandos de tela
 void limparTela() {
     #ifdef _WIN32
@@ -57,14 +59,16 @@ int main (int argc, char *argv[])
 
     int opcao, id;
     double valorterreno;
-    const char *nomeArquivo = argv[1]; 
-    struct Terrenos **terrenos = NULL;
+    const char *nomeArquivo = argv[1];
+    
+    Terrenos *terrenos[MAX_TERRENOS];
 
     // Tela de Carregamento
     limparTela();
     printf(AMARELO "Inicializando sistema e carregando dados de '%s'...\n" RESET, nomeArquivo);
-    inicializarVetor(&terrenos);
-    carregarTerrenos(&terrenos, nomeArquivo);
+    
+    inicializarVetor(terrenos);
+    carregarTerrenos(terrenos, nomeArquivo);
 
     do {
         limparTela();
@@ -178,13 +182,12 @@ int main (int argc, char *argv[])
     }
     while(opcao != 0);
 
-    // Limpeza de Memória Final
-    for (int i = 0; i < 100; i++) {
+   for (int i = 0; i < MAX_TERRENOS; i++) {
         if (terrenos[i] != NULL) {
             free(terrenos[i]);
+            terrenos[i] = NULL;
         }
     }
-    free(terrenos);
     
     printf(AZUL "  Ate logo!\n" RESET);
 
