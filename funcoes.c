@@ -154,7 +154,7 @@ double calcularValorTerreno ( Terrenos **terrenos, int id, int numero_terrenos){
     int i;
     double valor;
     for(i=0; i<numero_terrenos; i++){
-        if(id==terrenos[i]->id){ //OLHAR SE RODA COM id==terrenos[i].id ou muda para (id==terrenos[i]->id
+        if(id==terrenos[i]->id){ 
             valor=terrenos[i]->preco_m2*terrenos[i]->area; 
         }
         return valor;
