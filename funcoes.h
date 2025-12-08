@@ -2,7 +2,7 @@
 #define FUNCOES_H
 #include "Structs.h"
 
-void inicializarVetor(Terrenos ***terrenos);
+void inicializarVetor(Terrenos **terrenos);
 
 void criarTerreno(Terrenos **terrenos);
 void deletarTerreno(Terrenos **terrenos);
