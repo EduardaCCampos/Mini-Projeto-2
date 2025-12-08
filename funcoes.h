@@ -3,7 +3,7 @@
 #include "Structs.h"
 
 
-void criarTerreno ( Terrenos **terrenos);
+void criarTerreno ( Terrenos ***terrenos);
 
 void inicializarVetor ( Terrenos **terrenos);
 
