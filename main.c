@@ -4,12 +4,53 @@
 #include "Structs.h"
 #include "funcoes.h"
 
+// --- DEFINIÇÃO DE CORES E ESTILOS ---
+#define RESET   "\033[0m"
+#define VERMELHO "\033[31m"
+#define VERDE   "\033[32m"
+#define AMARELO "\033[33m"
+#define AZUL    "\033[34m"
+#define MAGENTA "\033[35m"
+#define CIANO   "\033[36m"
+#define BRANCO  "\033[37m"
+#define NEGRITO "\033[1m"
+
+// Detecta sistema operacional para comandos de tela
+void limparTela() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
+void pausar() {
+    printf(AMARELO "\n[Pressione ENTER para continuar...]" RESET);
+    getchar();
+    getchar();
+}
+
+void exibirCabecalho() {
+    printf(CIANO NEGRITO);
+    printf("   /\\                                                        \n");
+    printf("  /  \\    _____ _    _ _____   _____ _____  ______          \n");
+    printf(" /_  _\\  |  __ \\ |  | |  __ \\ / ____|  __ \\|  ____|    \n");
+    printf("   ||    | |  | | |  | | |__) | |  __| |__) | |__           \n");
+    printf("   ||    | |  | | |  | |  ___/| | |_ |  _  /|  __|          \n");
+    printf("   ||    | |__| | |__| | |    | |__| | | \\ \\| |____       \n");
+    printf("  |__|   |_____/ \\____/|_|     \\_____|_|  \\_\\______|    \n");
+    printf(RESET);
+    printf(BRANCO "  >>> SISTEMA DE GESTAO DE TERRENOS v2.0 <<<\n" RESET);
+    printf(AZUL "  ==========================================================\n" RESET);
+}
 
 int main (int argc, char *argv[]) 
 {
+    // Verifica argumentos
     if (argc != 2) {
-        printf("Erro: Voce deve informar o nome do arquivo como argumento.\n");
-        printf("Instrução de uso: %s <nome_do_arquivo_de_dados>\n", argv[0]);
+        printf(VERMELHO NEGRITO "ERRO CRITICO:\n" RESET);
+        printf(VERMELHO " Voce deve informar o nome do arquivo de dados.\n" RESET);
+        printf(AMARELO " Uso correto: %s <banco_de_dados.dat>\n" RESET, argv[0]);
         return 1;
     }
 
@@ -18,97 +59,136 @@ int main (int argc, char *argv[])
     const char *nomeArquivo = argv[1]; 
     struct Terrenos **terrenos = NULL;
 
+    // Tela de Carregamento
+    limparTela();
+    printf(AMARELO "Inicializando sistema e carregando dados de '%s'...\n" RESET, nomeArquivo);
     inicializarVetor(&terrenos);
     carregarTerrenos(&terrenos, nomeArquivo);
+    
+    // Pequena pausa simulada (opcional, apenas para efeito visual)
+    // Se estiver no windows: Sleep(1000);
 
     do {
-        printf("\n========== MENU ==========\n");
-        printf("ESCOLHA A SUA AÇÃO:\n");
-        printf("1. Criar Terreno\n");
-        printf("2. Deletar Terreno\n");
-        printf("3. Mostrar Informações de Terreno\n");
-        printf("4. Editar Terreno\n");
-        printf("5. Calcular Valor de Terreno\n");
-        printf("6. Contar Terrenos Ocupados\n");
-        printf("7. Contar Terrenos Livres\n");
-        printf("8. Calcular Valor Total dos Terrenos\n");
-        printf("9. Salvar Dados\n");
-        printf("0. Sair\n");
-        printf("==========================\n");
-        printf("Escolha uma opção: ");
+        limparTela();
+        exibirCabecalho();
+
+        // Menu Organizado por Categorias
+        printf("\n" NEGRITO "  [ GESTAO ]" RESET "\n");
+        printf("   " VERDE "1." RESET " Criar Terreno\n");
+        printf("   " VERDE "2." RESET " Deletar Terreno\n");
+        printf("   " VERDE "4." RESET " Editar Terreno\n");
+        
+        printf("\n" NEGRITO "  [ CONSULTAS ]" RESET "\n");
+        printf("   " CIANO "3." RESET " Mostrar Detalhes (ID)\n");
+        printf("   " CIANO "5." RESET " Calcular Valor de Venda (ID)\n");
+        
+        printf("\n" NEGRITO "  [ RELATORIOS ]" RESET "\n");
+        printf("   " MAGENTA "6." RESET " Contar Ocupados\n");
+        printf("   " MAGENTA "7." RESET " Contar Livres\n");
+        printf("   " MAGENTA "8." RESET " Patrimonio Total (Soma Geral)\n");
+
+        printf("\n" NEGRITO "  [ SISTEMA ]" RESET "\n");
+        printf("   " AMARELO "9." RESET " Salvar Dados Agora\n");
+        printf("   " VERMELHO "0." RESET " Sair e Salvar\n");
+        
+        printf(AZUL "\n  ______________________________\n" RESET);
+        printf(NEGRITO "  > Escolha uma opcao: " RESET);
         
         if (scanf("%d", &opcao) != 1) {
             opcao = -1;
-            while (getchar() != '\n'); 
+            while (getchar() != '\n'); // Limpa buffer se digitar letra
         }
-        printf("\n");
 
         switch (opcao)
         {
         case 0:
-            printf("Encerrando programa… Salvando dados!\n");
+            printf(VERDE "\n  Encerrando programa... Salvando dados!\n" RESET);
             salvarTerrenos(terrenos, nomeArquivo);
             break;
 
-        case 1:
+        case 1: // Criar
+            printf(VERDE "\n  --- NOVO CADASTRO ---\n" RESET);
             criarTerreno(terrenos);
+            pausar();
             break;
 
-        case 2:
+        case 2: // Deletar
+            printf(VERMELHO "\n  --- REMOVER TERRENO ---\n" RESET);
             deletarTerreno(terrenos);
+            pausar();
             break;
 
-        case 3:
-            printf("Informe o ID do terreno que deseja visualizar: ");
+        case 3: // Mostrar
+            printf(CIANO "\n  --- CONSULTA DETALHADA ---\n" RESET);
+            printf("  Informe o ID do terreno: ");
             scanf("%d", &id);
-            printf("\n");
             mostrarTerreno(terrenos, id);
+            pausar();
             break;
 
-        case 4:
-            printf("Informe o ID do terreno que deseja editar: ");
+        case 4: // Editar
+            printf(AMARELO "\n  --- EDITAR REGISTRO ---\n" RESET);
+            printf("  Informe o ID do terreno: ");
             scanf("%d", &id);
-            printf("\n");
             editarTerreno(terrenos, id);
+            pausar();
             break;
 
-        case 5:
-            printf("Informe o ID do terreno: ");
+        case 5: // Calcular Valor Individual
+            printf(CIANO "\n  --- AVALIACAO DE IMOVEL ---\n" RESET);
+            printf("  Informe o ID do terreno: ");
             scanf("%d", &id);
-            printf("\n");
             valorterreno = calcularValorTerreno(terrenos, id);
-            if(valorterreno==-1) printf("Terreno inválido!\n");
-            else printf("Valor do terreno: %.2lf\n", valorterreno);
+            
+            if(valorterreno == -1) 
+                printf(VERMELHO "  Erro: Terreno nao encontrado!\n" RESET);
+            else 
+                printf("  Valor de Mercado: " VERDE "R$ %.2lf\n" RESET, valorterreno);
+            
+            pausar();
             break;
         
-        case 6:
-            printf("Terrenos ocupados: %d\n", contarTerrenosOcupados(terrenos));
+        case 6: // Ocupados
+            printf(MAGENTA "\n  --- ESTATISTICAS ---\n" RESET);
+            ; // Trigger image to explain occupancy visually if possible, otherwise rely on text.
+            printf("  Terrenos Ocupados: " NEGRITO "%d\n" RESET, contarTerrenosOcupados(terrenos));
+            pausar();
             break;
             
-        case 7:
-            printf("Terrenos livres: %d\n", contarTerrenosLivres(terrenos));
+        case 7: // Livres
+            printf(MAGENTA "\n  --- ESTATISTICAS ---\n" RESET);
+            printf("  Terrenos Livres (Vagas): " NEGRITO "%d\n" RESET, contarTerrenosLivres(terrenos));
+            pausar();
             break;
 
-        case 8:
-            printf("Valor total de todos os terrenos: %.2lf\n", calcularValorTotal(terrenos));
+        case 8: // Total
+            printf(MAGENTA "\n  --- FINANCEIRO ---\n" RESET);
+            printf("  Valor Somado da Carteira: " VERDE "R$ %.2lf\n" RESET, calcularValorTotal(terrenos));
+            pausar();
             break;
 
-        case 9:
+        case 9: // Salvar Manual
+            printf(AMARELO "\n  Salvando alteracoes no disco...\n" RESET);
             salvarTerrenos(terrenos, nomeArquivo);
+            pausar();
             break;
 
         default:
-            printf("Opcao invalida! Tente novamente.\n");
+            printf(VERMELHO "\n  Opcao invalida! Tente novamente.\n" RESET);
+            pausar(); // Pausa para ler o erro
         }
     }
-    while(opcao!=0);
+    while(opcao != 0);
 
+    // Limpeza de Memória Final
     for (int i = 0; i < 100; i++) {
         if (terrenos[i] != NULL) {
             free(terrenos[i]);
         }
     }
     free(terrenos);
+    
+    printf(AZUL "  Ate logo!\n" RESET);
 
     return 0;
 }
