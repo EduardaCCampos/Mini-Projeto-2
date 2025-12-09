@@ -62,6 +62,16 @@ O objetivo é gerenciar até 100 terrenos, permitindo criar, editar, remover, bu
 
 ---
 
+### 🔑 Otimização de Busca (Hash e Sondagem)
+
+Para garantir a eficiência na gestão de até 100 terrenos, foi implementada uma tabela Hash com as seguintes lógicas:
+
+1.  **Função Hash:** O índice inicial de inserção/busca é calculado pelo **Módulo Simples** (`ID % 100`).
+2.  **Sondagem Linear:** Em caso de colisão, o sistema busca a próxima posição livre de forma **linear e cíclica** (reinicia no índice 0 ao atingir o final).
+3.  **Busca Adaptada:** Todas as funções de consulta, edição e deleção foram modificadas para seguir a mesma lógica de sondagem, parando apenas ao encontrar o $\text{ID}$ desejado ou uma posição $\text{NULL}$ (vaga livre).
+
+---
+
  #### 🗂️ Estruturas Utilizadas
 
 | Struct | Campos Principais | Finalidade |
