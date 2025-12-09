@@ -94,8 +94,7 @@ gcc main.c funcoes.c -o terrenos
 
 O arquivo deve ser passado como parâmetro:
 
-./terrenos dados.dat
-
+Get-Content input.txt | ./terrenos.exe dados.dat
  
 
 ---
