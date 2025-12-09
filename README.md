@@ -84,18 +84,23 @@ Para garantir a eficiência na gestão de até 100 terrenos, foi implementada um
 
 ### 🖥️ Como executar
 
+(Excução com o arquivo como parâmetro)
 
 1. Compilar
    
 gcc main.c funcoes.c -o terrenos
 
 
-2. Executar
+2. Salvar 
 
-O arquivo deve ser passado como parâmetro:
+O arquivo deve ser passado como parâmetro: (Isso salvará o arquivos com os inputs e encerrará o programa)
 
 Get-Content input.txt | ./terrenos.exe dados.dat
- 
+
+3. Executar
+
+./terrenos dados.dat
+
 
 ---
 ### ⚙️ Tecnologias Utilizadas
